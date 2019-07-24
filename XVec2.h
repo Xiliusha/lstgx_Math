@@ -22,49 +22,14 @@ namespace xmath {
 		float y;
 
 		inline bool isZero() const { return x == 0.0f && y == 0.0f; }
-		inline float cross(const Vec2& other) const {
-			return x * other.y - y * other.x;
-		}
+		inline float cross(const Vec2& other) const { return x * other.y - y * other.x; }
 		float length() const { return std::sqrtf(x * x + y * y); }
 		float dot(const Vec2& v) const { return (x * v.x + y * v.y); }
-		void normalize() {
-			#ifdef min
-			#undef min // 微软NMSL
-			#endif // min
-			float n = x * x + y * y;
-			// Already normalized.
-			if (n == 1.0f)
-				return;
-			n = std::sqrt(n);
-			// Too close to zero.
-			if (n < std::numeric_limits<float>::min())
-				return;
-			n = 1.0f / n;
-			x *= n;
-			y *= n;
-		}
+		void normalize();
 		inline Vec2 rotate(const Vec2& other) const {
 			return Vec2(x * other.x - y * other.y, x * other.y + y * other.x);
 		}
-		void rotate(const Vec2& point, float angle)
-		{
-			float sinAngle = std::sin(angle);
-			float cosAngle = std::cos(angle);
-
-			if (point.isZero())
-			{
-				float tempX = x * cosAngle - y * sinAngle;
-				y = y * cosAngle + x * sinAngle;
-				x = tempX;
-			}
-			else
-			{
-				float tempX = x - point.x;
-				float tempY = y - point.y;
-				x = tempX * cosAngle - tempY * sinAngle + point.x;
-				y = tempY * cosAngle + tempX * sinAngle + point.y;
-			}
-		}
+		void rotate(const Vec2& point, float angle);
 		inline float lengthSquared() const { return (x * x + y * y); }
 		inline Vec2 getPerp() const { return Vec2(-y, x); }
 		Vec2 getNormalized() const {
