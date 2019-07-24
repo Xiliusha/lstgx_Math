@@ -28,6 +28,9 @@ namespace xmath {
 		float length() const { return std::sqrtf(x * x + y * y); }
 		float dot(const Vec2& v) const { return (x * v.x + y * v.y); }
 		void normalize() {
+			#ifdef min
+			#undef min // 微软NMSL
+			#endif // min
 			float n = x * x + y * y;
 			// Already normalized.
 			if (n == 1.0f)
