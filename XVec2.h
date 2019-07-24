@@ -58,7 +58,6 @@ namespace xmath {
 			{
 				float tempX = x - point.x;
 				float tempY = y - point.y;
-
 				x = tempX * cosAngle - tempY * sinAngle + point.x;
 				y = tempY * cosAngle + tempX * sinAngle + point.y;
 			}
