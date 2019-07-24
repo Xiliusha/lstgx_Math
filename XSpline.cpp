@@ -1,6 +1,5 @@
 ﻿#include "XSpline.h"
 
-using namespace cocos2d;
 using namespace xmath;
 using namespace xmath::spline;
 
@@ -38,8 +37,9 @@ float spline::CatmullRom(float t, float p1, float p2, float p3, float p4)
 inline float t_next(float ti, const Vec2& pi, const Vec2& pj, float alpha = 0.5) {
 	const auto dx = pj.x - pi.x;
 	const auto dy = pj.y - pi.y;
-	return std::pow(std::sqrt(dx*dx + dy * dy), alpha) + ti;
+	return std::pow(std::sqrt(dx * dx + dy * dy), alpha) + ti;
 }
+
 Vec2 spline::CentripetalCatmullRom(float t, const Vec2& p1, const Vec2& p2, const Vec2& p3, const Vec2& p4)
 {
 	constexpr auto t0 = 0.f;

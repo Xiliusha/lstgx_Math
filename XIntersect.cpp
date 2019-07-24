@@ -3,13 +3,12 @@
 #include "XMath.h"
 
 using namespace xmath;
-using namespace cocos2d;
 
 bool intersect::Point_AABB(const Vec2& p0, const Vec2& p1, float halfW, float halfH)
 {
 	const auto dx = p0.x - p1.x;
 	const auto dy = p0.y - p1.y;
-	return -halfW < dx&&dx < halfW&&-halfH < dy&&dy < halfH;
+	return -halfW < dx && dx < halfW && -halfH < dy && dy < halfH;
 }
 
 bool intersect::Point_OBB(const Vec2& p0, const Vec2& p1, float halfW, float halfH, float rot)

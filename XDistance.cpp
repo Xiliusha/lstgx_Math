@@ -4,12 +4,10 @@
 #include "XMath.h"
 #include <limits>
 
-using namespace cocos2d;
 using namespace xmath;
 using namespace xmath::equation;
 
-float distance::Point_Triangle(const Vec2& p,
-	const Vec2& A, const Vec2& B, const Vec2& C)
+float distance::Point_Triangle(const Vec2& p, const Vec2& A, const Vec2& B, const Vec2& C)
 {
 	const auto AX = p - A;
 	const auto AB = B - A;
@@ -50,8 +48,7 @@ float distance::Point_Triangle(const Vec2& p,
 	return 0.f;
 }
 
-float distance::Point_Triangle2(const Vec2& p,
-	const Vec2& A, const Vec2& B, const Vec2& C)
+float distance::Point_Triangle2(const Vec2& p, const Vec2& A, const Vec2& B, const Vec2& C)
 {
 	const auto E0 = A - B;
 	const auto E1 = C - B;
@@ -168,11 +165,10 @@ float distance::Point_Triangle2(const Vec2& p,
 			}
 		}
 	}
-	return (s_*E0 + t_ * E1 - P).length();
+	return (s_ * E0 + t_ * E1 - P).length();
 }
 
-float distance::Point_Diamond(const Vec2& p0,
-	const Vec2& p1, float halfW, float halfH, float rotation)
+float distance::Point_Diamond(const Vec2& p0, const Vec2& p1, float halfW, float halfH, float rotation)
 {
 	float tCos, tSin;
 	SinCos(rotation, tSin, tCos);
@@ -180,8 +176,7 @@ float distance::Point_Diamond(const Vec2& p0,
 	return distance::Point_Parallelogram(p0, p1, Vec2(halfW, 0.f).rotate(rot), Vec2(0.f, halfH).rotate(rot));
 }
 
-float distance::Point_Parallelogram(const Vec2& p0,
-	const Vec2& p1, const Vec2& A, const Vec2& B)
+float distance::Point_Parallelogram(const Vec2& p0, const Vec2& p1, const Vec2& A, const Vec2& B)
 {
 	const auto p = p0 - p1;
 	//const auto A = halfDiagA;
@@ -244,8 +239,7 @@ float distance::Point_Parallelogram(const Vec2& p0,
 	return 0.f;
 }
 
-float distance::Point_Ellipse(const Vec2& p0,
-	const Vec2& p1, float a, float b, float rotation)
+float distance::Point_Ellipse(const Vec2& p0, const Vec2& p1, float a, float b, float rotation)
 {
 	if (a == b)
 		return Point_Circle(p0, p1, a);
@@ -273,8 +267,7 @@ float distance::Point_Ellipse(const Vec2& p0,
 	return ret;
 }
 
-float distance::Point_Ellipse2(const Vec2& p0,
-	const Vec2& p1, float a, float b, float rotation)
+float distance::Point_Ellipse2(const Vec2& p0, const Vec2& p1, float a, float b, float rotation)
 {
 	if (a == b)
 		return Point_Circle(p0, p1, a);

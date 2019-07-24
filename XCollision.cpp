@@ -6,7 +6,6 @@
 
 using namespace std;
 using namespace xmath;
-using namespace cocos2d;
 using namespace xmath::collision;
 using namespace xmath::intersect;
 
